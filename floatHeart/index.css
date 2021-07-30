@@ -1,0 +1,25 @@
+#app {
+  height: 400px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+#container {
+  flex: 1;
+}
+#container svg {
+  height: 100%;
+  width: 100%;
+}
+
+.icon {
+  margin-left: auto;
+  transition: fill ease 0.2s;
+}
+.icon:hover {
+  cursor: pointer;
+}
+.icon.active {
+  fill: #f00;
+}
