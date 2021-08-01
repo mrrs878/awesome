@@ -1,33 +1,29 @@
-const linkIcon = document.querySelector("#linkIcon");
-let linkIconStatus = false;
-let svg = null;
+/*
+ * @Author: mrrs878@foxmail.com
+ * @Date: 2021-08-01 21:21:05
+ * @LastEditors: mrrs878@foxmail.com
+ * @LastEditTime: 2021-08-01 21:48:19
+ * @FilePath: \awesome\floatHeart\index.js
+ */
+const { d3, document } = window;
+const COLORS = ['rgb(254, 67, 101)', 'rgb(213, 26, 33)', 'rgb(130, 57, 53)', 'rgb(29, 191, 151)', 'rgb(64, 116, 52)'];
+const linkIcon = document.querySelector('#linkIcon');
 let count = 0;
 
-function like() {
-  linkIconStatus = true;
-  linkIcon.classList.add("active");
-  count += 1;
-  const bubble = createBubble(count);
-  updateBubble(bubble);
-  
-  setTimeout(() => {
-    linkIconStatus = false;
-    linkIcon.classList.remove("active");
-  }, 100);
-}
-
-function createBubble(text) {
-  const svg = d3.select("svg");
+function createBubble() {
+  const svg = d3.select('svg');
   const x = 300 - Math.random() * 40;
+  const colorIndex = Math.floor(COLORS.length * Math.random());
+  console.log(colorIndex);
 
-  const container = svg.append("g")
-    .attr('transform', `translate(${x}, 360)`)
-  
+  const container = svg.append('g')
+    .attr('transform', `translate(${x}, 360)`);
+
   container.append('circle')
     .attr('r', 15)
-    .attr('fill', 'rgb(254, 67, 101)')
+    .attr('fill', COLORS[colorIndex])
     .attr('class', 'bubble');
-    
+
   container.append('text')
     .text(`+${count}`)
     .attr('text-anchor', 'middle')
@@ -43,15 +39,23 @@ function updateBubble(bubble) {
     .ease(d3.easeLinear);
 
   bubble.transition(t)
-    .style("opacity", "0")
-    .style("transform", "translate(300px, 0)");
+    .style('opacity', '0')
+    .style('transform', 'translate(300px, 0)');
 }
 
-function initLongPressEvent() {
+function like() {
+  linkIcon.classList.add('active');
+  count += 1;
+  const bubble = createBubble(count);
+  updateBubble(bubble);
+
+  setTimeout(() => {
+    linkIcon.classList.remove('active');
+  }, 100);
 }
 
 function initSVG() {
-  svg = d3.select('#container')
+  d3.select('#container')
     .append('svg')
     .style('font', '10px sans-serif')
     .style('overflow', 'inherit')
@@ -59,7 +63,7 @@ function initSVG() {
 }
 
 function initEvents() {
-  linkIcon.addEventListener("click", like);
+  linkIcon.addEventListener('click', like);
 }
 
 function boot() {
