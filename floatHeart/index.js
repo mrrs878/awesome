@@ -2,12 +2,12 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-08-01 21:21:05
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-01 21:48:19
+ * @LastEditTime: 2021-08-01 22:00:29
  * @FilePath: \awesome\floatHeart\index.js
  */
-const { d3, document } = window;
+const { d3 } = window;
 const COLORS = ['rgb(254, 67, 101)', 'rgb(213, 26, 33)', 'rgb(130, 57, 53)', 'rgb(29, 191, 151)', 'rgb(64, 116, 52)'];
-const linkIcon = document.querySelector('#linkIcon');
+const linkIcon = window.document.querySelector('#linkIcon');
 let count = 0;
 
 function createBubble() {
