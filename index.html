@@ -2,8 +2,8 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-07-30 19:16:04
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-08-01 22:00:58
- * @FilePath: \awesome\index.html
+ * @LastEditTime: 2021-08-02 10:46:41
+ * @FilePath: d:\Data\Personal\MyPro\awesome\index.html
  * @Description: 
 -->
 <!DOCTYPE html>
@@ -15,16 +15,40 @@
   <link rel="icon" href="https://mrrsblog.oss-cn-shanghai.aliyuncs.com/avatar.jpg" type="image/png">
   <title>awesome</title>
   <style>
+    body {
+      color: rgba(0,0,0,.65);
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+      font-variant: tabular-nums;
+      line-height: 1.5715;
+      background-color: #f0f2f5;
+      font-feature-settings: "tnum", "tnum";
+      position: relative;
+    }
     .item {
       text-align: center;
     }
+    .header {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .main {
+      display: grid;
+    }
+    a {
+      text-decoration: none;
+      color: #df7766;
+    }
   </style>
 </head>
-  <h2>主要用来收集一些奇奇怪怪的想法/效果/工具</h2>
 <body>
-  <div class="item">
-    <a class="title" href="./floatHeart/index.html">直播间点赞效果</a>
-    <img src="./static/img/floatHeart.gif" alt="" srcset="">
-  </div>
+  <header class="header">主要用来收集一些奇奇怪怪的想法/效果/工具</header>
+  <main class="main">
+    <div class="item">
+      <img src="./static/img/floatHeart.gif" alt="" srcset="">
+      <br />
+      <a class="title" href="./floatHeart/index.html">直播间点赞效果</a>
+    </div>
+  </main>
+  <footer></footer>
 </body>
 </html>
