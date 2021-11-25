@@ -2,7 +2,7 @@
  * @Author: mrrs878@foxmail.com
  * @Date: 2021-07-30 19:16:04
  * @LastEditors: mrrs878@foxmail.com
- * @LastEditTime: 2021-11-25 21:43:49
+ * @LastEditTime: 2021-11-25 21:48:31
  * @FilePath: \awesome\index.html
  * @Description: 
 -->
@@ -20,9 +20,6 @@
       padding: 20px;
       box-sizing: border-box;
     }
-    header {
-      padding: 20px;
-    }
     main {
       display: flex;
       flex-wrap: wrap;
@@ -36,12 +33,28 @@
       width: max-content;
       border-radius: 10px;
     }
+    body {
+      color: rgba(0,0,0,.65);
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+      font-variant: tabular-nums;
+      line-height: 1.5715;
+      background-color: #f0f2f5;
+      font-feature-settings: "tnum", "tnum";
+      position: relative;
+    }
+    .header {
+      font-size: 18px;
+      font-weight: 700;
+      padding: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #df7766;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h2>主要用来收集一些奇奇怪怪的想法/效果/工具</h2>
-  </header>
+  <header class="header">主要用来收集一些奇奇怪怪的想法/效果/工具</header>
   <main>
     <div class="item">
       <a class="title" href="./floatHeart/index.html">直播间点赞效果</a>
