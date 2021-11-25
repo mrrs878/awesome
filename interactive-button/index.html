@@ -1,0 +1,109 @@
+<!--
+ * @Author: mrrs878@foxmail.com
+ * @Date: 2021-11-25 21:34:40
+ * @LastEditors: mrrs878@foxmail.com
+ * @LastEditTime: 2021-11-25 21:34:41
+ * @FilePath: \awesome\interactive-button\index.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG</title>
+  <style>
+    #svg:active {
+      opacity: 0.9;
+    }
+
+    #path,
+    #background {
+      stroke-width: 3;
+      stroke: #f00;
+      cursor: pointer;
+      transform: translate(5px, 5px);
+    }
+
+    #background {
+      opacity: 0.2;
+    }
+
+    #text {
+      user-select: none;
+      cursor: pointer;
+      fill: #000;
+
+      /** 
+             * 设置水平垂直居中
+            */
+      dominant-baseline: middle;
+      text-anchor: middle;
+    }
+  </style>
+  <script>
+    let rafId = -1;
+    const WIDTH = 70;
+    const HEIGHT = 30;
+    const RADIUS = 6;
+    const DEFAULT_OFFSET = 15;
+    const STORK_LENGTH = (WIDTH + HEIGHT) << 1;
+    const STEP = 5;
+
+    /**
+     * @description: 生成带有圆角的path
+     */
+    function roundedRect(w, h, tlr, trr, brr, blr) {
+      return `M 0 ${tlr} A ${tlr} ${tlr} 0 0 1 ${tlr} 0 L ${w - trr} 0 `
+        + `A ${trr} ${trr} 0 0 1 ${w} ${trr} L ${w} ${h - brr} `
+        + `A ${brr} ${brr} 0 0 1 ${w - brr} ${h} L ${blr} ${h} `
+        + `A ${blr} ${blr} 0 0 1 0 ${h - blr} Z`;
+    }
+
+    function animation() {
+      const path = document.querySelector('#path');
+      const preOffset = path.getAttribute('stroke-dashoffset');
+      const newOffset = preOffset - STEP;
+      path.setAttribute('stroke-dashoffset', newOffset);
+      if (newOffset >= 0) {
+        rafId = window.requestAnimationFrame(animation);
+      } else {
+        path.setAttribute('stroke-dashoffset', STORK_LENGTH - DEFAULT_OFFSET);
+        alert('success');
+      }
+    }
+
+    function onMouseDown() {
+      rafId = window.requestAnimationFrame(animation);
+    }
+
+    function onMouseUp() {
+      window.cancelAnimationFrame(rafId);
+      path.setAttribute('stroke-dashoffset', STORK_LENGTH - DEFAULT_OFFSET);
+    }
+
+    window.addEventListener('load', () => {
+      const path = document.querySelector('#path');
+      const background = document.querySelector('#background');
+      path.setAttribute('stroke-dashoffset', STORK_LENGTH - DEFAULT_OFFSET);
+      path.setAttribute('stroke-dasharray', STORK_LENGTH);
+
+      const roundedPath = roundedRect(WIDTH, HEIGHT, RADIUS, RADIUS, RADIUS, RADIUS);
+      path.setAttribute('d', roundedPath);
+      background.setAttribute('d', roundedPath);
+    });
+  </script>
+</head>
+
+<body>
+  <svg id="svg" width="80" height="40" fill="#ccc" onmousedown="onMouseDown()" onmouseup="onMouseUp()"
+    xmlns="http://www.w3.org/2000/svg">
+    <path id="path"></path>
+    <path id="background"></path>
+    <text id="text" x="40" y="20">click me</text>
+  </svg>
+</body>
+
+</html>
